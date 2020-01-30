@@ -55,5 +55,12 @@ ggplot(mtcars,aes(x=mpg))+geom_histogram(binwidth=5)
 
 plot(ToothGrowth$supp,ToothGrowth$len)
 boxplot(len~supp,data=ToothGrowth)
+boxplot(len~supp+dose, data=ToothGrowth)
 
-
+library(ggplot2)
+qplot(ToothGrowth$supp,ToothGrowth$len,geom="boxplot")
+qplot(supp,len,data=ToothGrowth,geom="boxplot")
+ggplot(ToothGrowth,aes(x=supp,y=len))+geom_boxplot()
+qplot(interaction(ToothGrowth$supp,ToothGrowth$dose),ToothGrowth$len,geom="boxplot")
+qplot(interaction(supp,dose),len,data = ToothGrowth,geom="boxplot")
+ggplot(ToothGrowth,aes(x=interaction(supp,dose),y=len))+geom_boxplot()
